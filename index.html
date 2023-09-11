@@ -61,6 +61,14 @@
             document.getElementById("spotify").src = entry.url;
           }
         }
+        if (
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches
+        ) {
+          // dark mode
+          document.getElementById("spotify").src =
+            document.getElementById("spotify").src + "?theme=0";
+        }
       }
 
       // Update the iframe src initially
