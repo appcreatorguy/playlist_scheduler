@@ -19,26 +19,26 @@
     ></iframe>
 
     <script>
-      // Define your schedule here. Each entry is a start time (in HH:MM format) and a corresponding URL.
+      // Define your schedule here. Each entry is a start time (in HHMM format) and a corresponding URL.
       const schedule = [
         {
-          time: "07:00",
-          url: "https://open.spotify.com/embed/playlist/1v05Xx7uzPCZaNIyqAqkxK?utm_source=generator",
+          time: "0700",
+          url: "https://open.spotify.com/embed/playlist/1v05Xx7uzPCZaNIyqAqkxK",
         },
         {
-          time: "09:00",
+          time: "0900",
           url: "https://open.spotify.com/embed/playlist/6RagVrlqVazs2usG1m5S3h",
         },
         {
-          time: "13:00",
+          time: "1300",
           url: "https://open.spotify.com/embed/playlist/68bVOCxSxWawMwrXVt0cwX",
         },
         {
-          time: "15:00",
+          time: "1500",
           url: "https://open.spotify.com/embed/playlist/3yCtRhMr0bhjKHANJllIOD",
         },
         {
-          time: "21:00",
+          time: "2100",
           url: "https://open.spotify.com/embed/playlist/0sx5l4FYzJXTFQqRj0O2O7",
         },
       ];
@@ -49,15 +49,16 @@
         const currentMinute = currentTime.getMinutes();
 
         // Format the current time as HH:MM
-        const formattedTime = `${String(currentHour).padStart(2, "0")}:${String(
+        const formattedTime = `${String(currentHour).padStart(2, "0")}${String(
           currentMinute
         ).padStart(2, "0")}`;
 
         for (const entry of schedule) {
-          if (formattedTime === entry.time) {
+          const time = parseInt(formattedTime);
+          const entrytime = parseInt(entry.time);
+          if (formattedTime >= entry.time) {
             // Update the iframe src
             document.getElementById("spotify").src = entry.url;
-            break; // Exit the loop after the first match is found
           }
         }
       }
